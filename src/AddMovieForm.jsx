@@ -5,6 +5,7 @@ const AddMovieForm = ({ addMovie }) => {
   const [description, setDescription] = useState('');
   const [posterURL, setPosterURL] = useState('');
   const [rating, setRating] = useState('');
+  const [trailerLink, setTrailerLink] = useState(''); // New field
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,12 +15,14 @@ const AddMovieForm = ({ addMovie }) => {
       description,
       posterURL,
       rating,
+      trailerLink 
     };
     addMovie(newMovie);
     setTitle('');
     setDescription('');
     setPosterURL('');
     setRating('');
+    setTrailerLink('');
   };
 
   return (
@@ -59,6 +62,14 @@ const AddMovieForm = ({ addMovie }) => {
         onChange={(e) => setRating(e.target.value)}
         min="0"
         max="10"
+        required 
+      />
+      <input
+        type="text"
+        placeholder="Trailer Link (YouTube embed link)"
+        className="mb-4 px-4 py-2 rounded-lg bg-gray-800 text-white w-full"
+        value={trailerLink}
+        onChange={(e) => setTrailerLink(e.target.value)}
         required
       />
       <button type="submit" className="w-full py-2 rounded-lg bg-yellow-400 text-black font-bold">
